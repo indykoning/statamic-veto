@@ -5,12 +5,14 @@ namespace JustBetter\Veto\Policies;
 use Statamic\Auth\User;
 use Statamic\Policies\TermPolicy;
 use Statamic\Sites\Site;
+use Statamic\Taxonomies\Taxonomy;
+use Statamic\Taxonomies\Term as StatamicTerm;
 
 class Term extends TermPolicy
 {
     /**
      * @param  User  $user
-     * @param  string  $term
+     * @param  StatamicTerm  $term
      */
     public function view($user, $term): bool
     {
@@ -19,7 +21,7 @@ class Term extends TermPolicy
 
     /**
      * @param  User  $user
-     * @param  string  $term
+     * @param  StatamicTerm  $term
      */
     public function edit($user, $term): bool
     {
@@ -28,7 +30,7 @@ class Term extends TermPolicy
 
     /**
      * @param  User  $user
-     * @param  string  $term
+     * @param  StatamicTerm  $term
      */
     public function update($user, $term): bool
     {
@@ -37,7 +39,7 @@ class Term extends TermPolicy
 
     /**
      * @param  User  $user
-     * @param  string  $taxonomy
+     * @param  Taxonomy  $taxonomy
      * @param  Site|null  $site
      */
     public function create($user, $taxonomy, $site = null): bool
@@ -49,7 +51,7 @@ class Term extends TermPolicy
     {
         $permission = config()->string('statamic-veto.permissions.term');
 
-        return $user->has($permission);
+        return $user->hasPermission($permission);
     }
 
     public static function bind(): void

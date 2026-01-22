@@ -3,13 +3,14 @@
 namespace JustBetter\Veto\Policies;
 
 use Statamic\Auth\User;
+use Statamic\Globals\GlobalSet as StatamicGlobalSet;
 use Statamic\Policies\GlobalSetPolicy;
 
 class GlobalSet extends GlobalSetPolicy
 {
     /**
      * @param  User  $user
-     * @param  string  $set
+     * @param  StatamicGlobalSet  $set
      */
     public function view($user, $set): bool
     {

@@ -3,6 +3,9 @@
 namespace JustBetter\Veto\Tests;
 
 use JustBetter\Veto\ServiceProvider;
+use Statamic\Auth\User;
+use Statamic\Facades\Role;
+use Statamic\Facades\User as UserFacade;
 use Statamic\Testing\AddonTestCase;
 use Statamic\Testing\Concerns\PreventsSavingStacheItemsToDisk;
 
@@ -28,5 +31,19 @@ class TestCase extends AddonTestCase
             'database' => ':memory:',
             'prefix' => '',
         ]);
+    }
+
+    protected function setUpUser(string $permission): User
+    {
+        $role = Role::make('::role::')->save();
+        $role->addPermission($permission)->save();
+        /** @var User $user */
+        $user = UserFacade::make();
+        $user->data([
+            'email' => 'example@example.com',
+        ])->save();
+        $user->assignRole($role);
+
+        return $user;
     }
 }

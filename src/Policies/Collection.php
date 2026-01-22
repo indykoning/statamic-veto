@@ -3,13 +3,14 @@
 namespace JustBetter\Veto\Policies;
 
 use Statamic\Auth\User;
+use Statamic\Entries\Collection as StatamicCollection;
 use Statamic\Policies\CollectionPolicy;
 
 class Collection extends CollectionPolicy
 {
     /**
      * @param  User  $user
-     * @param  string  $collection
+     * @param  StatamicCollection  $collection
      */
     public function view($user, $collection): bool
     {
