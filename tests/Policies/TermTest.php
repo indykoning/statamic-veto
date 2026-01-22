@@ -100,6 +100,7 @@ class TermTest extends TestCase
         $taxonomy = TaxonomyFacade::make();
         $taxonomy->handle('::taxonomy::')
             ->title('::title::');
+        $taxonomy->collections(['::collection::']);
         $taxonomy->save();
 
         /** @var StatamicTerm $term */
