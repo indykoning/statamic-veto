@@ -48,7 +48,7 @@ class TermTest extends TestCase
         $taxonomy = TaxonomyFacade::make();
         $taxonomy->handle('::taxonomy::')
             ->title('::title::');
-        $taxonomy->save();
+        $taxonomy->saveQuietly();
 
         /** @var StatamicTerm $term */
         $term = TermFacade::make('test');
@@ -57,7 +57,7 @@ class TermTest extends TestCase
             ->data([
                 'title' => '::title::',
             ]);
-        $term->save();
+        $term->saveQuietly();
 
         $policy = app(Term::class);
 
@@ -74,7 +74,7 @@ class TermTest extends TestCase
         $taxonomy = TaxonomyFacade::make();
         $taxonomy->handle('::taxonomy::')
             ->title('::title::');
-        $taxonomy->save();
+        $taxonomy->saveQuietly();
 
         /** @var StatamicTerm $term */
         $term = TermFacade::make('test');
@@ -83,7 +83,7 @@ class TermTest extends TestCase
             ->data([
                 'title' => '::title::',
             ]);
-        $term->save();
+        $term->saveQuietly();
 
         $policy = app(Term::class);
 
@@ -100,8 +100,7 @@ class TermTest extends TestCase
         $taxonomy = TaxonomyFacade::make();
         $taxonomy->handle('::taxonomy::')
             ->title('::title::');
-        $taxonomy->collections(['::collection::']);
-        $taxonomy->save();
+        $taxonomy->saveQuietly();
 
         /** @var StatamicTerm $term */
         $term = TermFacade::make('test');
@@ -110,7 +109,7 @@ class TermTest extends TestCase
             ->data([
                 'title' => '::title::',
             ]);
-        $term->save();
+        $term->saveQuietly();
 
         $policy = app(Term::class);
 
@@ -127,7 +126,7 @@ class TermTest extends TestCase
         $taxonomy = TaxonomyFacade::make();
         $taxonomy->handle('::taxonomy::')
             ->title('::title::');
-        $taxonomy->save();
+        $taxonomy->saveQuietly();
 
         $policy = app(Term::class);
 
