@@ -1,5 +1,9 @@
 # Statamic Veto
 
+<a href="https://justbetter.nl" title="JustBetter">
+    <img src="./art/header.png" alt="JustBetter logo">
+</a>
+
 <p>
     <a href="https://github.com/justbetter/statamic-veto"><img src="https://img.shields.io/github/actions/workflow/status/justbetter/statamic-veto/tests.yml?label=tests&style=flat-square" alt="Tests"></a>
     <a href="https://github.com/justbetter/statamic-veto"><img src="https://img.shields.io/github/actions/workflow/status/justbetter/statamic-veto/coverage.yml?label=coverage&style=flat-square" alt="Coverage"></a>
