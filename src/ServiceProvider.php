@@ -50,7 +50,7 @@ class ServiceProvider extends AddonServiceProvider
             PermissionFacade::register($permission, function (Permission $permission): void {
                 $permission
                     ->label('Edit all globals')
-                    ->description('👑 Veto the ability to let this role edit all globals.');
+                    ->description(__('👑 Veto the ability to let this role edit all globals.'));
             });
         });
 
@@ -65,7 +65,7 @@ class ServiceProvider extends AddonServiceProvider
             PermissionFacade::register($permission, function (Permission $permission): void {
                 $permission
                     ->label('Edit all entries')
-                    ->description('👑 Veto the ability to let this role edit all collection entries.');
+                    ->description(__('👑 Veto the ability to let this role edit all collection entries.'));
             });
         });
 
@@ -80,7 +80,7 @@ class ServiceProvider extends AddonServiceProvider
             PermissionFacade::register($permission, function (Permission $permission): void {
                 $permission
                     ->label('Edit all taxonomy terms')
-                    ->description('👑 Veto the ability to let this role edit all taxonomy terms.');
+                    ->description(__('👑 Veto the ability to let this role edit all taxonomy terms.'));
             });
         });
 
