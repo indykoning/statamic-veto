@@ -2,49 +2,55 @@
 
 namespace JustBetter\Veto\Policies;
 
+use Illuminate\Database\Eloquent\Model;
 use Statamic\Auth\User;
 use Statamic\Entries\Collection;
 use Statamic\Entries\Entry as StatamicEntry;
+use Statamic\Facades\User as UserFacade;
 use Statamic\Policies\EntryPolicy;
 use Statamic\Sites\Site;
 
 class Entry extends EntryPolicy
 {
     /**
-     * @param  User  $user
+     * @param  User|Model  $user
      * @param  StatamicEntry  $entry
      */
     public function edit($user, $entry): bool
     {
+        $user = UserFacade::fromUser($user);
         return $this->can($user) || parent::edit($user, $entry);
     }
 
     /**
-     * @param  User  $user
+     * @param  User|Model  $user
      * @param  StatamicEntry  $entry
      */
     public function update($user, $entry): bool
     {
+        $user = UserFacade::fromUser($user);
         return $this->can($user) || parent::update($user, $entry);
     }
 
     /**
-     * @param  User  $user
+     * @param  User|Model  $user
      * @param  Collection  $collection
      * @param  Site|null  $site
      */
     public function create($user, $collection, $site = null): bool
     {
+        $user = UserFacade::fromUser($user);
         return $this->can($user) || parent::create($user, $collection, $site);
     }
 
     /**
-     * @param  User  $user
+     * @param  User|Model  $user
      * @param  Collection  $collection
      * @param  Site|null  $site
      */
     public function store($user, $collection, $site = null): bool
     {
+        $user = UserFacade::fromUser($user);
         return $this->can($user) || parent::store($user, $collection, $site);
     }
 
