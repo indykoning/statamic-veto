@@ -18,7 +18,7 @@ class GlobalSetVariables extends GlobalSetVariablesPolicy
         $user = UserFacade::fromUser($user);
         $permission = config()->string('statamic-veto.permissions.global');
 
-        return $user->hasPermission($permission) || parent::edit($user, $entry);
+        return $user !== null && ($user->hasPermission($permission) || parent::edit($user, $entry));
     }
 
     public static function bind(): void

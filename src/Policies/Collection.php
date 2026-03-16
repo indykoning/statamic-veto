@@ -19,7 +19,7 @@ class Collection extends CollectionPolicy
         $user = UserFacade::fromUser($user);
         $permission = config()->string('statamic-veto.permissions.entry');
 
-        return $user->hasPermission($permission) || parent::view($user, $collection);
+        return $user !== null && ($user->hasPermission($permission) || parent::view($user, $collection));
     }
 
     public static function bind(): void

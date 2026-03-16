@@ -18,7 +18,7 @@ class Taxonomy extends TaxonomyPolicy
         $user = UserFacade::fromUser($user);
         $permission = config()->string('statamic-veto.permissions.term');
 
-        return $user->hasPermission($permission) || parent::view($user, $taxonomy);
+        return $user !== null && ($user->hasPermission($permission) || parent::view($user, $taxonomy));
     }
 
     public static function bind(): void

@@ -19,7 +19,7 @@ class GlobalSet extends GlobalSetPolicy
         $user = UserFacade::fromUser($user);
         $permission = config()->string('statamic-veto.permissions.global');
 
-        return $user->hasPermission($permission) || parent::view($user, $set);
+        return $user !== null && ($user->hasPermission($permission) || parent::view($user, $set));
     }
 
     public static function bind(): void

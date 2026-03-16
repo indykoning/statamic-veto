@@ -19,7 +19,7 @@ class Term extends TermPolicy
     public function view($user, $term): bool
     {
         $user = UserFacade::fromUser($user);
-        return $this->can($user) || parent::view($user, $term);
+        return $user !== null && ($this->can($user) || parent::view($user, $term));
     }
 
     /**
@@ -29,7 +29,7 @@ class Term extends TermPolicy
     public function edit($user, $term): bool
     {
         $user = UserFacade::fromUser($user);
-        return $this->can($user) || parent::edit($user, $term);
+        return $user !== null && ($this->can($user) || parent::edit($user, $term));
     }
 
     /**
@@ -39,7 +39,7 @@ class Term extends TermPolicy
     public function update($user, $term): bool
     {
         $user = UserFacade::fromUser($user);
-        return $this->can($user) || parent::update($user, $term);
+        return $user !== null && ($this->can($user) || parent::update($user, $term));
     }
 
     /**
@@ -50,7 +50,7 @@ class Term extends TermPolicy
     public function create($user, $taxonomy, $site = null): bool
     {
         $user = UserFacade::fromUser($user);
-        return $this->can($user) || parent::create($user, $taxonomy, $site);
+        return $user !== null && ($this->can($user) || parent::create($user, $taxonomy, $site));
     }
 
     protected function can(User $user): bool
