@@ -4,8 +4,8 @@ namespace JustBetter\Veto\Policies;
 
 use Illuminate\Database\Eloquent\Model;
 use Statamic\Auth\User;
-use Statamic\Globals\GlobalSet as StatamicGlobalSet;
 use Statamic\Facades\User as UserFacade;
+use Statamic\Globals\GlobalSet as StatamicGlobalSet;
 use Statamic\Policies\GlobalSetPolicy;
 
 class GlobalSet extends GlobalSetPolicy

@@ -4,6 +4,7 @@ namespace JustBetter\Veto\Policies;
 
 use Illuminate\Database\Eloquent\Model;
 use Statamic\Auth\User;
+use Statamic\Contracts\Auth\User as UserContract;
 use Statamic\Entries\Collection;
 use Statamic\Entries\Entry as StatamicEntry;
 use Statamic\Facades\User as UserFacade;
@@ -19,7 +20,7 @@ class Entry extends EntryPolicy
     public function edit($user, $entry): bool
     {
         $user = UserFacade::fromUser($user);
-        
+
         return $user !== null && ($this->can($user) || parent::edit($user, $entry));
     }
 
@@ -30,6 +31,7 @@ class Entry extends EntryPolicy
     public function update($user, $entry): bool
     {
         $user = UserFacade::fromUser($user);
+
         return $user !== null && ($this->can($user) || parent::update($user, $entry));
     }
 
@@ -41,6 +43,7 @@ class Entry extends EntryPolicy
     public function create($user, $collection, $site = null): bool
     {
         $user = UserFacade::fromUser($user);
+
         return $user !== null && ($this->can($user) || parent::create($user, $collection, $site));
     }
 
@@ -52,10 +55,11 @@ class Entry extends EntryPolicy
     public function store($user, $collection, $site = null): bool
     {
         $user = UserFacade::fromUser($user);
+
         return $user !== null && ($this->can($user) || parent::store($user, $collection, $site));
     }
 
-    protected function can(User $user): bool
+    protected function can(UserContract $user): bool
     {
         $permission = config()->string('statamic-veto.permissions.entry');
 
